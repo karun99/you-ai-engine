@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "perspective-ai": {
+      "command": "node",
+      "args": [
+        "mcp-server/server.mjs"
+      ]
+    }
+  }
+}
