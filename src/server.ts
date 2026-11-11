@@ -22,6 +22,7 @@ const authMiddleware = async (req: AuthenticatedRequest, res: Response, next: Ne
     
     req.userSession = session;
     next();
+    return;
 };
 
 // --- Auth Routes ---
@@ -33,6 +34,7 @@ app.post('/api/auth/register', async (req: Request, res: Response) => {
     } catch (error: any) {
         res.status(400).json({ success: false, error: error.message });
     }
+    return;
 });
 
 app.post('/api/auth/login', async (req: Request, res: Response) => {
@@ -46,6 +48,7 @@ app.post('/api/auth/login', async (req: Request, res: Response) => {
     } catch (error: any) {
         res.status(400).json({ success: false, error: error.message });
     }
+    return;
 });
 
 // --- Project Routes ---
@@ -67,6 +70,7 @@ app.post('/api/projects', authMiddleware, async (req: AuthenticatedRequest, res:
     } catch (error: any) {
         res.status(400).json({ success: false, error: error.message });
     }
+    return;
 });
 
 app.get('/api/projects', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
@@ -78,6 +82,7 @@ app.get('/api/projects', authMiddleware, async (req: AuthenticatedRequest, res: 
     } catch (error: any) {
         res.status(500).json({ success: false, error: error.message });
     }
+    return;
 });
 
 app.get('/api/projects/:id', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
@@ -88,6 +93,7 @@ app.get('/api/projects/:id', authMiddleware, async (req: AuthenticatedRequest, r
     } catch (error: any) {
         res.status(500).json({ success: false, error: error.message });
     }
+    return;
 });
 
 app.post('/api/projects/:id/generate', authMiddleware, async (req: AuthenticatedRequest, res: Response) => {
@@ -109,6 +115,7 @@ app.post('/api/projects/:id/generate', authMiddleware, async (req: Authenticated
     } catch (error: any) {
         res.status(500).json({ success: false, error: error.message });
     }
+    return;
 });
 
 // --- Admin Routes ---
@@ -122,6 +129,7 @@ app.get('/api/admin/stats', authMiddleware, async (req: AuthenticatedRequest, re
     } catch (error: any) {
         res.status(500).json({ success: false, error: error.message });
     }
+    return;
 });
 
 // Export for Vercel Serverless Functions
